@@ -1,0 +1,8 @@
+<h1 class="text-3xl font-bold underline">
+  Hello world!
+</h1>
+<% @blog_posts.each do |post| %>
+<h2><%= link_to post.title, post %></h2>
+<%= post.body %>
+<%end %>
+
