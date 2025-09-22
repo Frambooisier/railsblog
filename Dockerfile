@@ -27,6 +27,11 @@ ENV RAILS_ENV="production" \
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build
+# Install Node.js and yarn for cssbundling-rails
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g yarn
+
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
