@@ -10,7 +10,9 @@ module Blog
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
-
+    #CHATGPT SUGGETION to disable this in order to buiuld app on render.com where it cannot connect
+    # to database while compling where it doesn't have the enviroment variable passed with url yet
+    config.assets.initialize_on_precompile = false
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.

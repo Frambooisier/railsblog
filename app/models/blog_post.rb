@@ -4,10 +4,12 @@
           validates :body, presence: true
 end
 
-        # status string field
+        # 'status' string field
         # - draft
         # - published
-        # 'published_at' datetime field
-        # - nil
-        # - 1.year.ago
-        # - 1.year.from_now
+        # - scheduled
+
+        'published_at' datetime field
+        - nil
+        - 1.year.ago
+        - 1.year.from_now
