@@ -3,8 +3,6 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  #I added this line from github issue, should prevent the need for master key
-  config.require_master_key = true
   # Code is not reloaded between requests.
   config.enable_reloading = false
 
