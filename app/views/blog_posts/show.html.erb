@@ -1,4 +1,16 @@
 <%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in? %>
 
 <h1><%= @blog_post.title %></h1>
+<body>
 <%= @blog_post.body %>
+</body>
+<div>
+created at: <%= @blog_post.created_at %>
+</div>
+updated at: <%= @blog_post.updated_at %>
+<div>
+  published at: <%= @blog_post.published_at %>
+</div>
+<div>
+  content: <%= @blog_post.content %>
+</div>

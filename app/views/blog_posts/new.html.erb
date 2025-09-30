@@ -1,3 +1,3 @@
-<h1>Creating new blog post form it's from blog_posts_controller>>action>>new>>view called new.html.erb</h1>
+<h1>New Blog Post</h1>
 
-<%= render "form", blog_post:@blog_post %>
+<%= render partial: "form", locals: {blog_post: @blog_post} %>
