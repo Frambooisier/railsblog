@@ -1,6 +1,7 @@
 <%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in? %>
 
 <h1><%= @blog_post.title %></h1>
+<%=console %>
 <body>
 <%= @blog_post.body %>
 </body>
@@ -14,3 +15,6 @@ updated at: <%= @blog_post.updated_at %>
 <div>
   content: <%= @blog_post.content %>
 </div>
+
+<div> <%=image_tag @blog_post.cover_image if @blog_post.cover_image.attached?%></div>
+<%= link_to "Back", blog_posts_path %>

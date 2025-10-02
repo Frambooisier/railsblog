@@ -1,7 +1,7 @@
+
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/utilities";
+@import "@tailwindcss/typography";
 
 /* Basic readable defaults */
 body {
