@@ -1,0 +1,28 @@
+<h1>Cheat Report <%= @cheat_report.id %></h1>
+
+<p>
+  <strong>Player:</strong>
+
+<div> <%=image_tag @cheat_report.cover_image if @cheat_report.cover_image.attached?%></div>
+  <%= @cheat_report.player_name %>
+the content  <%= @cheat_report.content %>
+</p>
+<div style="background-color: red; color: white; padding: 6px 10px; border-radius: 6px; display: inline-block;">
+  This is a red test box.
+</div>
+
+<div class="status-box <%= @cheat_report.status %>">
+  <%= @cheat_report.status %>
+</div>
+
+<div class="<%= case @cheat_report.status
+                when 'confirmed' then 'px-3 py-1 rounded font-bold inline-block bg-red-500 text-white'
+                when 'suspicious' then 'px-3 py-1 rounded font-bold inline-block bg-yellow-400 text-black'
+                when 'overturned' then 'px-3 py-1 rounded font-bold inline-block bg-green-500 text-white'
+                else 'px-3 py-1 rounded font-bold inline-block bg-gray-300 text-black'
+                end %>">
+  <%= @cheat_report.status %>
+</div>
+
+
+<%=link_to "edit", edit_cheat_report_path(@cheat_report), class: "btn btn-primary btn-block" %>

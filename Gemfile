@@ -74,3 +74,5 @@ gem "tailwindcss-ruby", "~> 4.1"
 gem "foreman", "~> 0.90.0"
 
 gem "pagy", "~> 9.4"
+
+gem "faker", "~> 3.5"

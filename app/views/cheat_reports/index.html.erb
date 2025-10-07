@@ -1,0 +1,31 @@
+<h1>Cheat Reports</h1>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  <% @cheat_reports.each do |report| %>
+    <tr>
+      <td><%= report.id %></td>
+      <td><%= report.player_name %></td>
+
+
+      <td><%= link_to "Show", cheat_report_path(report) %></td>
+      <div> <%=image_tag report.cover_image if report.cover_image.attached?%></div>
+    </tr>
+  <% end %>
+</table>
+
+<% if @cheat_reports.empty? %>
+  <p>No cheat reports yet.</p>
+<% end %>
+
+<h2>Subpages</h2>
+<ul>
+  <% cheat_reports_subpages.each do |link| %>
+    <li><%= link_to link[:name], link[:path] %></li>
+  <% end %>
+</ul>
+
+<%== pagy_nav(@pagy) %>

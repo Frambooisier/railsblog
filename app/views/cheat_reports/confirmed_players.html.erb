@@ -1,0 +1,20 @@
+<h1>Confirmed players list</h1>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  <% @cheat_reports.each do |report| %>
+    <tr>
+      <td><%= report.id %></td>
+      <td><%= report.player_name %></td>
+      <td><%= link_to "Show", cheat_report_path(report) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<% if @cheat_reports.empty? %>
+  <p>No cheat reports yet.</p>
+<% end %>
+

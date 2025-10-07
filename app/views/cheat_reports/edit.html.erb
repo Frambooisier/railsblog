@@ -1,0 +1,5 @@
+<%= @cheat_report.inspect %>
+<h1>Edit cheat report</h1>
+<%= render partial: "form", locals: {cheat_report: @cheat_report}%>
+
+<%= button_to "Delete", @cheat_report, method: :delete, data: {turbo_confirm: "Are you sure?"} %>

@@ -1,6 +1,8 @@
 <h1 class="text-3xl font-bold underline">
   Hello world!
 </h1>
+
+<%== pagy_nav(@pagy) %>
 <% @blog_posts.each do |post| %>
   <% if post.draft? %>
   <div class="p-2 rounded bg-gray-100 text-gray-900">Draft</div>

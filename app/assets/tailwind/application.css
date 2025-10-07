@@ -1,2 +1,23 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+.status-box {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+    color: white;
+}
+
+.status-box.confirmed {
+    background-color: red;
+}
+
+.status-box.suspicious {
+    background-color: yellow;
+    color: black;
+}
+
+.status-box.overturned {
+    background-color: green;
+}
