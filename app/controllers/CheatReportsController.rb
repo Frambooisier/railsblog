@@ -4,7 +4,13 @@ class CheatReportsController < ApplicationController
     @pagy, @cheat_reports = pagy(@cheat_reports)
 
   end
+  def tailwindtest
+    @cheat_reports = CheatReport.all
 
+    if params[:sort].present?
+      @cheat_reports = @cheat_reports.order(params[:sort] => :asc)
+    end
+  end
   def show
     @cheat_report = CheatReport.find(params[:id])
   end

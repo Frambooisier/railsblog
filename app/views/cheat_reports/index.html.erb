@@ -9,9 +9,21 @@
     <tr>
       <td><%= report.id %></td>
       <td><%= report.player_name %></td>
+      <td><%= report.status %></td>
+      <td class="<%= case report.status
+                      when 'confirmed' then 'px-3 py-1 rounded font-bold inline-block bg-red-500 text-white'
+                      when 'suspected' then 'px-3 py-1 rounded font-bold inline-block bg-yellow-400 text-black'
+                      when 'overturned' then 'px-3 py-1 rounded font-bold inline-block bg-green-500 text-white'
+                      when 'pending' then 'px-3 py-1 rounded font-bold inline-block bg-gray-500 text-white'
+                      when 'rejected' then 'px-3 py-1 rounded font-bold inline-block bg-green-300 text-white'
+                      when 'not_enough_evidence' then 'px-3 py-1 rounded font-bold inline-block bg-green-200 text-white'
+                      when 'under_review' then 'px-3 py-1 rounded font-bold inline-block bg-blue-500 text-white'
+                      else 'px-3 py-1 rounded font-bold inline-block bg-gray-300 text-black'
+                      end %>">
+        <%= report.status %>
+      </td>
 
-
-      <td><%= link_to "Show", cheat_report_path(report) %></td>
+      <td><%= link_to "Show", cheat_report_path(report), class: "btn btn-xs" %></td>
       <div> <%=image_tag report.cover_image if report.cover_image.attached?%></div>
     </tr>
   <% end %>

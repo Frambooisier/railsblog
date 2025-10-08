@@ -1,19 +1,12 @@
 <h1>Cheat Report <%= @cheat_report.id %></h1>
 
 <p>
-  <strong>Player:</strong>
+  <strong>Player:<%=@cheat_report.player_name %></strong>
 
 <div> <%=image_tag @cheat_report.cover_image if @cheat_report.cover_image.attached?%></div>
   <%= @cheat_report.player_name %>
 the content  <%= @cheat_report.content %>
 </p>
-<div style="background-color: red; color: white; padding: 6px 10px; border-radius: 6px; display: inline-block;">
-  This is a red test box.
-</div>
-
-<div class="status-box <%= @cheat_report.status %>">
-  <%= @cheat_report.status %>
-</div>
 
 <div class="<%= case @cheat_report.status
                 when 'confirmed' then 'px-3 py-1 rounded font-bold inline-block bg-red-500 text-white'
@@ -23,6 +16,33 @@ the content  <%= @cheat_report.content %>
                 end %>">
   <%= @cheat_report.status %>
 </div>
+<div>
+<!--  Display atributes of object cheat_report in the html table-->
+<!--  just a reminder of useful helper?-->
+  <%#= @cheat_report.attributes %>
+  <%#= @cheat_report.inspect %>
+  <table class="table w-full">
+    <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @cheat_report.attributes.each do |key, value| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= value %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 
+</div>
+<button class="btn btn-xs transition-colors duration-200 active:bg-green-500 active:text-white">
+  Show
+</button>
 
 <%=link_to "edit", edit_cheat_report_path(@cheat_report), class: "btn btn-primary btn-block" %>
+
+
