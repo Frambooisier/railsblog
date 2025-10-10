@@ -1,66 +1,27 @@
-<div class="overflow-x-auto">
-  <table class="table table-s ">
-    <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Job</th>
-      <th>company</th>
-      <th>location</th>
-      <th>Last Login</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%@cheat_reports.each do |report| %>
-    <tr>
-      <th><%=report.id %></th>
-      <td><%=report.player_name %></td>
-      <td>Quality Control Specialist</td>
-      <td>Littel, Schaden and Vandervort</td>
-      <td>Canada</td>
-      <td>12/16/2020</td>
-      <td class="<%= case report.status
-                         when 'confirmed' then 'px-3 py-1 rounded font-bold inline-block bg-red-500 text-white'
-                         when 'suspected' then 'px-3 py-1 rounded font-bold inline-block bg-yellow-400 text-black'
-                         when 'overturned' then 'px-3 py-1 rounded font-bold inline-block bg-green-500 text-white'
-                         when 'pending' then 'px-3 py-1 rounded font-bold inline-block bg-gray-500 text-white'
-                         when 'rejected' then 'px-3 py-1 rounded font-bold inline-block bg-green-300 text-white'
-                         when 'not_enough_evidence' then 'px-3 py-1 rounded font-bold inline-block bg-green-200 text-white'
-                         when 'under_review' then 'px-3 py-1 rounded font-bold inline-block bg-blue-500 text-white'
-                         else 'px-3 py-1 rounded font-bold inline-block bg-gray-300 text-black'
-                         end %>">
-      <%= report.status %>
-      </td>
-      <td>
-        <%= link_to "Show", cheat_report_path(report), class: "btn btn-xs" %>
-        <button class="btn btn-xs transition-colors duration-500 hover:bg-green-500 hover:text-white">
-          Show
-        </button>
-        <button class="btn btn-xs transition-colors duration-200 active:bg-green-500 active:text-white">
-          Vote innocent
-        </button>
-        <button class="btn btn-xs transition-colors duration-200 active:bg-red-500 active:text-white">
-          Vote guilty
-        </button>
+<h1 class="text-2xl font-bold mb-4">Cheat Reports</h1>
 
-
-
-      </td>
-    <% end %>
-    </tr>
-
-      <th></th>
-      <th>Name</th>
-      <th>Job</th>
-      <th>company</th>
-      <th>location</th>
-      <th>Last Login</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-
-    </tfoot>
-  </table>
+<div class="mb-4 space-x-2">
+  Sort by:
+  <%= link_to "Load Reports",
+                      tailwindtest_cheat_reports_path,
+                      data: { turbo_frame: "cheat_reports" },
+                      class: "btn btn-xs" %>
+  <%= link_to "ID", tailwindtest_cheat_reports_path(sort: "id", direction: "asc"),
+              data: { turbo_frame: "cheat_reports" },
+              class: "btn btn-xs" %>
+  <%= link_to "Name", tailwindtest_cheat_reports_path(sort: "player_name", direction: "asc"),
+              data: { turbo_frame: "cheat_reports" },
+              class: "btn btn-xs" %>
+  <%= link_to "Status", tailwindtest_cheat_reports_path(sort: "status", direction: "asc"),
+              data: { turbo_frame: "cheat_reports" },
+              class: "btn btn-xs" %>
 </div>
+
+
+
+
+<turbo-frame id="cheat_reports">
+
+  <%= render partial: "table", locals: { cheat_reports: @cheat_reports.sort_by } %>
+
+</turbo-frame>

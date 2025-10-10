@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :pending_players
       get :suspected_players
       get :tailwindtest
+      get :turbo_test
     end
   end
   resources :blog_posts do

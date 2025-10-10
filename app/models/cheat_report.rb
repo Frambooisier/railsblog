@@ -10,5 +10,5 @@ class CheatReport < ApplicationRecord
       suspected: 5,
       overturned: 6
     }
-    scope :reported, -> { where(status: 0) }
+    scope :confirmed, -> { where(status: 2) }
   end

@@ -25,6 +25,8 @@ CheatReport.create(
   voted_as_true: rand(0),
   voted_as_false: rand(100),
   voted_as_true_by: "#{faker_name}",
-  voted_as_false_by: "#{faker_name}")
+  voted_as_false_by: "#{faker_name}",
+  steam_url: "https://steamcommunity.com/profiles/76561199219934080/"
+)
 end
 end

@@ -1,0 +1,70 @@
+<%= turbo_frame_tag "cheat_reports" do %>
+  this is from partial table
+<div class="overflow-x-auto">
+  <table class="table table-s w-full">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Job</th>
+      <th>Company</th>
+      <th>Location</th>
+      <th>Last Login</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% cheat_reports.each do |report| %>
+      <tr>
+        <td><%= report.id %></td>
+        <td><%= report.player_name %></td>
+        <td>Quality Control Specialist</td>
+        <td>Littel, Schaden and Vandervort</td>
+        <td>Canada</td>
+        <td>12/16/2020</td>
+        <td class="<%= case report.status
+                       when 'confirmed' then 'px-3 py-1 rounded font-bold inline-block bg-red-500 text-white'
+                       when 'suspected' then 'px-3 py-1 rounded font-bold inline-block bg-yellow-400 text-black'
+                       when 'overturned' then 'px-3 py-1 rounded font-bold inline-block bg-green-500 text-white'
+                       when 'pending' then 'px-3 py-1 rounded font-bold inline-block bg-gray-500 text-white'
+                       when 'rejected' then 'px-3 py-1 rounded font-bold inline-block bg-green-300 text-white'
+                       when 'not_enough_evidence' then 'px-3 py-1 rounded font-bold inline-block bg-green-200 text-white'
+                       when 'under_review' then 'px-3 py-1 rounded font-bold inline-block bg-blue-500 text-white'
+                       else 'px-3 py-1 rounded font-bold inline-block bg-gray-300 text-black'
+                       end %>">
+          <%= report.status %>
+        </td>
+        <td class="space-x-1">
+          <%= link_to "Show", cheat_report_path(report), class: "btn btn-xs" %>
+          <button class="btn btn-xs transition-colors duration-500 hover:bg-green-500 hover:text-white">Show</button>
+
+          <% if user_signed_in? %>
+          <button class="btn btn-xs transition-colors duration-200 active:bg-green-500 active:text-white">Vote innocent</button>
+            <% else %>
+            <!-- Grayed-out inactive version -->
+            <div class="tooltip" data-tip="Log in to vote">
+            <button class="btn btn-xs bg-gray-300 text-gray-500 cursor-not-allowed opacity-60" disabled> Vote innocent</button>
+            </div>
+            <% end %>
+
+          <button class="btn btn-xs transition-colors duration-200 active:bg-red-500 active:text-white">Vote guilty</button>
+
+          <% if user_signed_in? %>
+            <!-- Active button (hoverable) -->
+            <button class="btn btn-xs transition-colors duration-500 hover:bg-green-500 hover:text-white">
+              Show
+            </button>
+          <% else %>
+            <!-- Grayed-out inactive version -->
+            <button class="btn btn-xs bg-gray-300 text-gray-500 cursor-not-allowed opacity-60" disabled>
+              Show
+            </button>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<%end%>

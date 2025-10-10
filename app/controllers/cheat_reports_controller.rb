@@ -4,11 +4,30 @@ class CheatReportsController < ApplicationController
     @pagy, @cheat_reports = pagy(@cheat_reports)
 
   end
-  def tailwindtest
-    @cheat_reports = CheatReport.all
+  def turbo_test
+    if turbo_frame_request?
+      puts "TRUBO CALL DETECTED"
+      render partial: "turbo_message"
+    else
+      puts "NO TURBO FRAME"
+      render :turbo_test
+    end
+  end
 
-    if params[:sort].present?
-      @cheat_reports = @cheat_reports.order(params[:sort] => :asc)
+  def tailwindtest
+    sort_column = params[:sort] || "id"
+    sort_direction = params[:direction] || "asc"
+
+    @cheat_reports = CheatReport
+                       .order("#{sort_column} #{sort_direction}")
+
+
+    if turbo_frame_request?
+      puts ">>> Turbo request detected!"
+      render partial: "table", locals: { cheat_reports: @cheat_reports }
+    else
+      puts ">>> normal request detected!"
+      render :tailwindtest
     end
   end
   def show

@@ -4,6 +4,16 @@
   <strong>Player:<%=@cheat_report.player_name %></strong>
 
 <div> <%=image_tag @cheat_report.cover_image if @cheat_report.cover_image.attached?%></div>
+<div class="avatar">
+  <div class="w-24 rounded">
+    <% if @cheat_report.cover_image.attached? %>
+      <%= image_tag url_for(@cheat_report.cover_image), alt: "User Avatar" %>
+    <% else %>
+      <img src="https://avatars.fastly.steamstatic.com/2e0a7788645471676f44f441df988e9458aeacfc_full.jpg" alt="Default Avatar" />
+    <% end %>
+  </div>
+</div>
+
   <%= @cheat_report.player_name %>
 the content  <%= @cheat_report.content %>
 </p>
