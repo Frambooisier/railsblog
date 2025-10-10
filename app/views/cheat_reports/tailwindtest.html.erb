@@ -22,6 +22,8 @@
 
 <turbo-frame id="cheat_reports">
 
-  <%= render partial: "table", locals: { cheat_reports: @cheat_reports.sort_by } %>
+  <%= render partial: "table", locals: { cheat_reports: @cheat_reports} %>
+  <%= link_to "New Cheat Report", new_cheat_report_path, class: "btn btn-primary" %>
+  <%= link_to "Turbo Test", turbo_test_cheat_reports_path, class: "btn btn-primary" %>
 
 </turbo-frame>
