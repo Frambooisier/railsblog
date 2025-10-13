@@ -15,6 +15,14 @@ end
 def faker_name
   Faker::Internet.username(specifier: 5..12) # or combine Faker::Game.title etc.
 end
+def steamlink(num)
+  if num.even?
+    "https://steamcommunity.com/profiles/76561199219934080/"
+  else
+    "https://steamcommunity.com/profiles/76561198051939606/"
+  end
+
+end
 if CheatReport.count < 120
 100.times do |i|
 CheatReport.create(
@@ -22,11 +30,11 @@ CheatReport.create(
   description: "This is a test report",
   status: rand(7),
   reported_by: "#{faker_name}",
-  voted_as_true: rand(0),
-  voted_as_false: rand(100),
+  voted_as_true: rand(20),
+  voted_as_false: rand(20),
   voted_as_true_by: "#{faker_name}",
   voted_as_false_by: "#{faker_name}",
-  steam_url: "https://steamcommunity.com/profiles/76561199219934080/"
+  steam_url: "#{steamlink(i)}"
 )
 end
 end

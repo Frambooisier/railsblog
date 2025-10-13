@@ -1,11 +1,11 @@
 <%= turbo_frame_tag "cheat_reports" do %>
-  this is from partial table
 <div class="overflow-x-auto">
   <table class="table table-s w-full">
     <thead>
     <tr>
       <th>ID</th>
       <th>Name</th>
+      <th>Avatar</th>
       <th>Job</th>
       <th>Company</th>
       <th>Location</th>
@@ -18,7 +18,11 @@
     <% cheat_reports.each do |report| %>
       <tr>
         <td><%= report.id %></td>
-        <td><%= report.player_name %></td>
+        <td><%= report.player_name%> </td>
+        <td><div class="avatar">
+          <div class="w-20 rounded">
+          <%= image_tag steam_avatar_url(report.steam_url), alt: "Steam Avatar" %>
+          </div></td>
         <td>Quality Control Specialist</td>
         <td>Littel, Schaden and Vandervort</td>
         <td>Canada</td>
@@ -63,6 +67,9 @@
     </tbody>
   </table>
 </div>
+  <div class="flex justify-center my-6">
+    <%== pagy_nav_daisyui(@pagy) %>
+  </div>
 <%end%>
 
-<%= console %>
+<!--            <img src="https://avatars.fastly.steamstatic.com/2e0a7788645471676f44f441df988e9458aeacfc_full.jpg  " />-->

@@ -20,7 +20,7 @@ class CheatReportsController < ApplicationController
 
     @cheat_reports = CheatReport
                        .order("#{sort_column} #{sort_direction}")
-
+@pagy, @cheat_reports = pagy(@cheat_reports)
 
     if turbo_frame_request?
       puts ">>> Turbo request detected!"

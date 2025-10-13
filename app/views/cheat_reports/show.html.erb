@@ -9,7 +9,9 @@
     <% if @cheat_report.cover_image.attached? %>
       <%= image_tag url_for(@cheat_report.cover_image), alt: "User Avatar" %>
     <% else %>
-      <img src="https://avatars.fastly.steamstatic.com/2e0a7788645471676f44f441df988e9458aeacfc_full.jpg" alt="Default Avatar" />
+      <%= image_tag steam_avatar_url(@cheat_report.steam_url), alt: "Steam Avatar" %>
+
+      " alt="Default Avatar" />
     <% end %>
   </div>
 </div>
@@ -53,6 +55,4 @@ the content  <%= @cheat_report.content %>
   Show
 </button>
 
-<%=link_to "edit", edit_cheat_report_path(@cheat_report), class: "btn btn-primary btn-block" %>
-
-
+<%=link_to "edit", edit_cheat_report_path(@cheat_report), class: "btn btn-xs transition-colors duration-200 active:bg-green-500 active:text-white" %>
