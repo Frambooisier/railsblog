@@ -2,6 +2,18 @@ source "https://rubygems.org"
 
 #manually addde with chatGPT might be bad idea who knows
 gem "cssbundling-rails"
+#for steam authentication whit help of friend
+gem 'omniauth-steam', '~> 1.0', '>= 1.0.6'
+gem 'dotenv-rails', groups: [:development, :test] # optional, for environment variables
+gem 'omniauth'
+gem 'omniauth-openid'
+# google AI recommends to add this otherwise I would need to manually configure CSRF protection
+gem 'omniauth-rails_csrf_protection'
+gem 'multi_json', '~> 1.17'
+
+#this is for env management
+gem 'figaro'
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.2", ">= 8.0.2.1"

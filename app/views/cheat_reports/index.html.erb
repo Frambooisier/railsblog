@@ -1,5 +1,40 @@
 <h1>Cheat Reports</h1>
 
+
+<%= link_to "Sign in with Stdsafdsaeam", user_steam_omniauth_authorize_path, method: :post %>
+
+
+
+
+
+<% if session[:steam_id] %>
+  <p>Signed in as: <%= session[:steam_id] %></p>
+  <%= link_to "Sign Out", sign_out_path %>
+<% else %>
+  <%= link_to "Sign in with Steam", sign_in_path %>
+<% end %>
+
+
+<!--<audio controls>-->
+<!--  <source src="<%#= asset_path 'mao.mp3' %>" type="audio/mpeg">-->
+<!--</audio>-->
+
+<audio id="bg-music" autoplay loop muted>
+  <source src="<%= asset_path 'mao.mp3' %>" type="audio/mpeg">
+</audio>
+
+<script>
+    const music = document.getElementById('bg-music');
+    music.volume = 0.5;
+
+    // Unmute after the user interacts (e.g. clicks anywhere)
+    document.addEventListener('click', () => {
+        music.muted = false;
+    }, { once: true });
+</script>
+
+
+
 <table border="1" cellpadding="5">
   <tr>
     <th>ID</th>

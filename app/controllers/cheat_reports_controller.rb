@@ -4,6 +4,10 @@ class CheatReportsController < ApplicationController
     @pagy, @cheat_reports = pagy(@cheat_reports)
 
   end
+
+  def country
+    @cheat_reports = CheatReport.all
+  end
   def turbo_test
     if turbo_frame_request?
       puts "TRUBO CALL DETECTED"

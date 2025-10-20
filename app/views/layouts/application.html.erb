@@ -49,8 +49,8 @@
       <a class="btn btn-ghost text-xl">Flap/Burden</a>
       <%= link_to "Home", root_path, class: "btn btn-xs" %>
       <%= link_to "Home", root_path, class: "btn btn-xs" %>
-      <%= link_to "Cheat reports", cheat_reports_path, class: "btn btn-xs" %>
-      <%= link_to "tailwind test ground", tailwindtest_cheat_reports_path, class: "btn btn-xs" %>
+      <%= link_to "Boby's mom", cheat_reports_path, class: "btn btn-xs" %>
+      <%= link_to "Cheat reports", tailwindtest_cheat_reports_path, class: "btn btn-xs" %>
 
       <% if user_signed_in? %>
         <%= link_to "Profile", edit_user_registration_path, class: "btn btn-xs" %>
@@ -70,7 +70,6 @@
 
 
 </div>
-
 <!-- CHANGED: move main content (yield) outside of prose so wide elements can scroll -->
 <div class="px-4">
   <%= yield %>

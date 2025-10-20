@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+
+  # Devise routes including OmniAuth callbacks
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+
+
+  # Health check
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  # Optional: custom paths for sign in/out
+  get '/sign_in', to: redirect('/users/auth/steam'), as: :sign_in
+  get '/sign_out', to: 'devise/sessions#destroy', as: :sign_out
+
+  # Cheat reports
   resources :cheat_reports, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     collection do
       get :confirmed_players
@@ -16,17 +22,15 @@ Rails.application.routes.draw do
       get :suspected_players
       get :tailwindtest
       get :turbo_test
+      get :country
     end
   end
+
+  # Blog posts
   resources :blog_posts do
     resource :cover_image, only: [:destroy], module: :blog_posts
-    #module adds so the link is blog_posts/ andthen cover_image
   end
-  # get "/blog_posts/:id/edit", to: "blog_posts#edit", as: :edit_blog_post
-  # patch "/blog_posts/:id", to: "blog_posts#update"
-  # get "/blog_posts/:id", to: "blog_posts#show", as: :blog_post
-  # post "/blog_posts", to: "blog_posts#create", as: :blog_posts
 
-  # Defines the root path route ("/")
-   root "blog_posts#index"
+  # Root path
+  root "cheat_reports#index"
 end
